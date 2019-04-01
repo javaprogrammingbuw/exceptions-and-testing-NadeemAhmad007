@@ -34,15 +34,25 @@ public class ExceptionHandling {
 		}
 		
 		try{
-			//Shift this block to a new method please which then will be called in the try-catch block
-			double c = -7.0;
-			if( c < 0.0 ) {
-				throw new MyException("Result  is negative ");
-			}
-			double d = Math.sqrt(c);
-			System.out.println(d);
+			
+			check(-7.0);
+			
 		} catch (MyException e) {
 			e.printStackTrace();
 		}
+		
+		 
+			}
+	 private static double check(double i) throws MyException {
+		// TODO Auto-generated method stub
+		   if( i < 0.0 ) {
+				throw new MyException("Result  is negative ");
+				
+			}
+		   else {
+				
+				return Math.sqrt(i);
+			}
 	}
-}
+	
+	}
