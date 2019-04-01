@@ -34,6 +34,7 @@ public class ExceptionHandling {
 		}
 		
 		try{
+			//Shift this block to a new method please which then will be called in the try-catch block
 			double c = -7.0;
 			if( c < 0.0 ) {
 				throw new MyException("Result  is negative ");
