@@ -29,11 +29,18 @@ public BankAccount(Person owner,double balance ){
 		this.limit=0.0;
 }
 public double getBalance(){
-		return this.balance ;
+	
+	    return this.balance ;
+	
+
 }
 
 public void setBalance(double balance){
+	if(limit==0) {
 		this.balance = balance;
+}else {
+	this.balance=balance+limit;
+}
 }
 
 public String getIban(){
@@ -45,25 +52,43 @@ public Person getOwner(){
 }
 public double getLimit(){
 		return this.limit;
-}	
-public void deposit(double amount,int securityNumber){
-	if (securityNumber==this.securityNumber){
-		this.balance= balance + amount;
-	}
 }
+public int getSecurityNumber() {
+	return this.securityNumber;
+}
+public void deposit(double amount,int securityNumber){
+	
+	if (this.securityNumber==securityNumber){
+		
+	this.balance = getBalance()+getLimit() + amount;
+		
+	}
+	
+}
+
 public void withdraw(double amount,int securityNumber){
-	if(securityNumber==this.securityNumber){
-		if(amount <=(balance+limit)){
+
+
+	if(securityNumber==this.securityNumber) {
+		if(amount>(getBalance())){
+			double c= getBalance()-getLimit();
+			this.balance=amount-getLimit()-c;
 			
-			this.balance=balance - amount ;
+			
+			
+		}else {
+			this.balance=getBalance()+getLimit();
+			this.balance=getBalance()-amount ;
 		}
 	}
 }
    public void transfer (BankAccount remote,double amount,int securityNumber){
+//	   
 	if(securityNumber==this.securityNumber){
-		if(amount <=(balance+limit)){
-			this.balance=balance - amount;
-			remote.setBalance(amount); 
+		if(amount <=(getBalance()+limit)){
+			remote.setBalance(remote.getBalance()+amount);
+			this.balance=getBalance() - amount;
+			 
 		}
 			
          }
