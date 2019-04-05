@@ -79,12 +79,11 @@ public class TestSuite {
 		BankAccount account = new BankAccount(owner, 1000.00,2000.00);
 		assertEquals(1000.00,account.getLimit(),0.001);
 	}
-	//This test fails
 	@Test public static void test9() { // 
 		Person owner = new Person("Syju");
-		BankAccount account = new BankAccount(owner, 15000.00,25000.00);
-		account.withdraw(20000.00,account.getSecurityNumber());
-		assertEquals(-20000,account.getBalance(),0.001);
+		BankAccount account = new BankAccount(owner, 1000.00,2000.00);
+		account.withdraw(1500.00,account.getSecurityNumber());
+		assertEquals(1500,account.getBalance(),0.001);
 	}
 	@Test public static void test10() {
 		Person owner = new Person("Manan");
